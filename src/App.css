@@ -1,0 +1,38 @@
+.friends {
+  display: flex;
+  flex-direction:row;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  gap: 10px; /* Space between span and button */
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px; /* Adjust as needed */
+  margin: 10px auto; /* Centers the whole div */
+}
+.oldfriends {
+  display: flex;
+  flex-direction:row;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  gap: 10px; /* Space between span and button */
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px; /* Adjust as needed */
+  margin: 10px auto; /* Centers the whole div */
+}
+
+
+
+.container
+{
+  align-content: center;
+  text-align: center;
+}
+
+button{
+  background-color: blanchedalmond;
+  border:0px;
+ padding: 7px;
+ cursor: pointer;
+ border-radius:20px;
+}
