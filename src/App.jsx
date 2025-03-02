@@ -69,14 +69,14 @@ function App() {
       let number='+91'+phnumber
       window.location.href=`https://t.me/${number}`
       }*/
-     let number='+91'+phnumber
+     let number='+91'+phnumber.trim()
      switch(platform)
      {
-      case 'whatssap':window.location.href=`https://api.whatsapp.com/send?phone=${number}&text=${val}`
+      case "whatsapp":window.location.href=`https://api.whatsapp.com/send?phone=${number}&text=${val}`
                        break;
-      case 'telegram': window.location.href=`https://t.me/${number}`
+      case "telegram": window.location.href=`https://t.me/${number}`
                        break
-        case 'signal': window.location.href=`https://signal.me/#p/${number}`
+        case "signal": window.location.href=`https://signal.me/#p/${number}`
         break
      }
 
