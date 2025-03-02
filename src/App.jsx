@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+
 function App() {
   const [value, setValue] = useState("")
   const[friends,setFriend]=useState([])
@@ -12,7 +13,7 @@ function App() {
 
   }
    const setFriends=()=>{
-    if(value.trim().length>0&&number.length===10)
+    if(value.trim().length>0&&number.length>=10)
     {
       localStorage.setItem("data", JSON.stringify([...friends,{name:value,number:number}]));
     
@@ -58,11 +59,26 @@ function App() {
     }
 
    }
-   const MessageFriend=(index,phnumber)=>{
+   const MessageFriend=(index,phnumber,platform)=>{
     
     let val="enter message here ✌️"
-   
-    window.location.href=`https://api.whatsapp.com/send?phone=${phnumber}&text=${val}`
+     /*if(platform=="whatsapp")
+      window.location.href=`https://api.whatsapp.com/send?phone=${phnumber}&text=${val}`
+      else
+      {
+      let number='+91'+phnumber
+      window.location.href=`https://t.me/${number}`
+      }*/
+     let number='+91'+phnumber
+     switch(platform)
+     {
+      case 'whatssap':window.location.href=`https://api.whatsapp.com/send?phone=${number}&text=${val}`
+                       break;
+      case 'telegram': window.location.href=`https://t.me/${number}`
+                       break
+        case 'signal': window.location.href=`https://signal.me/#p/${number}`
+        break
+     }
 
    }
    useEffect(()=>{
@@ -108,7 +124,9 @@ function App() {
                 <td>{v.name}</td>
                 <td>{v.number}</td>
                 <td><button className="btn btn-danger mx-1" onClick={()=>removeFriend(index,v)}>Remove</button></td>
-                <td><button className="btn btn-success mx-1" onClick={()=>MessageFriend(index,v.number)}>Message</button></td>
+                <td><button className="btn btn-success mx-1" onClick={()=>MessageFriend(index,v.number,"whatsapp")}><span><i class="bi bi-whatsapp"></i></span></button></td>
+                <td><button /*className="btn btn-success mx-1"*/ style={{backgroundColor:"#26A5E4",border:"0px",padding:"8px",borderRadius:"2px"}} onClick={()=>MessageFriend(index,v.number,"telegram")}><span><i class="bi bi-telegram"></i></span></button></td>
+                <td><button onClick={()=>MessageFriend(index,v.number,"signal")}><i class="bi bi-signal"></i></button></td>
               </tr>
             ))
           }
