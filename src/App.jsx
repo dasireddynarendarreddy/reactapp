@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 
-
+import Filter from './Filter'
 function App() {
   const [value, setValue] = useState("")
   const[friends,setFriend]=useState([])
   const[status,setStatus]=useState(false)
   const[old,setold]=useState([])
   const[number,setNumber]=useState('')
-  const[text,settext]=useState(" ")
+   
+  
   const setData=(e)=>{
     setValue(e.target.value)
 
@@ -98,6 +99,7 @@ function App() {
    
   return (
     <>
+        
       <div className="container d-flex flex-column justify-content-center align-items-center vh-100 text-center">
         <div>
           <label>Name</label>
@@ -109,7 +111,7 @@ function App() {
           </div>
          
           <button onClick={setFriends} className='btn btn-success mb-3'>AddFriend</button>
-          
+          <Filter friends={friends} setfriends={setFriend}/>
           <table className="table table-bordered">
             <thead>
               <tr>
@@ -124,9 +126,9 @@ function App() {
                 <td>{v.name}</td>
                 <td>{v.number}</td>
                 <td><button className="btn btn-danger mx-1" onClick={()=>removeFriend(index,v)}>Remove</button></td>
-                <td><button className="btn btn-success mx-1" onClick={()=>MessageFriend(index,v.number,"whatsapp")}><span><i class="bi bi-whatsapp"></i></span></button></td>
-                <td><button /*className="btn btn-success mx-1"*/ style={{backgroundColor:"#26A5E4",border:"0px",padding:"8px",borderRadius:"2px"}} onClick={()=>MessageFriend(index,v.number,"telegram")}><span><i class="bi bi-telegram"></i></span></button></td>
-                <td><button onClick={()=>MessageFriend(index,v.number,"signal")}><i class="bi bi-signal"></i></button></td>
+                <td><button className="btn btn-success mx-1" onClick={()=>MessageFriend(index,v.number,"whatsapp")}><span><i className="bi bi-whatsapp"></i></span></button></td>
+                <td><button /*className="btn btn-success mx-1"*/ style={{backgroundColor:"#26A5E4",border:"0px",padding:"8px",borderRadius:"2px"}} onClick={()=>MessageFriend(index,v.number,"telegram")}><span><i className="bi bi-telegram"></i></span></button></td>
+                <td><button onClick={()=>MessageFriend(index,v.number,"signal")}><i className="bi bi-signal"></i></button></td>
               </tr>
             ))
           }
